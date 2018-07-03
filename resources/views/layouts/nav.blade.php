@@ -16,6 +16,11 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
+                @section('my_menu')
+                    @can('後台管理')
+                        <li><a class="nav-link" href="/admin">{{ __('Admin') }}</a></li>
+                    @endcan
+                @show
                 @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -24,9 +29,9 @@
                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
                 @else
-                    @section('my_menu')
+                    {{--  @section('my_menu')
                         <li><a class="nav-link" href="/home">{{ __('Home') }}</a></li>
-                    @show
+                    @show  --}}
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
