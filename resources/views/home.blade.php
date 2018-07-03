@@ -21,3 +21,8 @@
     </div>
 </div>
 @endsection
+
+@section('my_menu')
+    <li><a class="nav-link" href="/home">我的選項</a></li>
+    @parent
+@stop
