@@ -22,6 +22,8 @@
                     ->control(bs()->submit('建立測驗'))
                     ->showAsRow() 
             }}
+            
+            {{ bs()->hidden('user_id', Auth::id()) }}
         {{ bs()->closeForm() }}
     @else
         @component('bs::alert', ['type' => 'danger'])
