@@ -8,6 +8,9 @@
                 <a href="exam/{{ $exam->id }}">
                     {{ $exam->title }}
                 </a>
+                @if($exam->enable!=1)
+                    {{ bs()->badge()->text('關閉') }}
+                @endif
             </li>
         @empty
             <li class="list-group-item">尚無任何測驗</li>
