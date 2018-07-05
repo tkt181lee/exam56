@@ -55,6 +55,11 @@
                 <dt>
                     <h3>
                     @can('建立測驗')
+                        <form action="{{route('topic.destroy', $topic->id)}}"  method="post" style="display:inline">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-sm btn-danger">刪除</button>
+                        </form>
                         <a href="{{route('topic.edit', $topic->id)}}" class="btn btn-sm btn-warning">編輯</a>
                         （{{$topic->ans}}）
                     @endcan
