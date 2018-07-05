@@ -56,6 +56,15 @@
         {{ bs()->closeForm() }}
     @endcan
     @if(Auth::id())
+            @can('進行測驗')
+                {{ bs()->openForm('post', '/test') }}
+                    {{ bs()->hidden('user_id', $user_id) }}
+                    {{ bs()->hidden('exam_id', $exam->id) }}
+                    <div class="text-center my-5">
+                        {{ bs()->submit('寫完送出') }}
+                    </div>
+                {{ bs()->closeForm() }}
+            @endcan
         <dl>
             @forelse ($exam->topics as $key => $topic)
                 <dt>

@@ -90,7 +90,21 @@ class ExamController extends Controller
         // dd($exam);
         // $topics = Topic::where('exam_id', $exam->id)->get();
         // return view('exam.show', ['exam' => $exam, 'topics' => $topics]);
-        return view('exam.show', compact('exam'));
+        // return view('exam.show', compact('exam'));
+        $user = Auth::user();
+        if ($user and $user->can('進行測驗')) {
+            $exam->topics = $exam->topics->random(5);
+            $user_id      = $user->id;
+            return view('exam.show', compact('exam'));
+        } elseif ($user and $user->can('建立測驗')) {
+            $topic  = new Topic;
+            $method = 'post';
+            $action = '/topic';
+            return view('exam.show', compact('exam', 'topic', 'method', 'action'));
+        } else {
+            return view('exam.show', compact('exam'));
+        }
+
     }
 
     /**
