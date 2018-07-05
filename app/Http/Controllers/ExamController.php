@@ -131,6 +131,6 @@ class ExamController extends Controller
     public function destroy(Exam $exam)
     {
         $exam->delete();
-        return redirect()->route('exam.index');
+        // return redirect()->route('exam.index');
     }
 }

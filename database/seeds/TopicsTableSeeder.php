@@ -12,6 +12,6 @@ class TopicsTableSeeder extends Seeder
     public function run()
     {
         // 每次建立 20 個題目
-        factory(\App\Topic::class, 20)->create(['exam_id' => 1]);
+        factory(\App\Topic::class, 20)->create(['exam_id' => 4]);
     }
 }
